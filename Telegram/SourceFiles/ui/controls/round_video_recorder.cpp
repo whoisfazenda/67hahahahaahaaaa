@@ -741,6 +741,13 @@ void RoundVideoRecorder::Private::encodeVideoFrame(
 		const QImage &frame) {
 	Expects(!_finished);
 
+	// The encoder may be reset (on failure or cancel) while frames are still
+	// queued, and a camera may deliver an empty frame: never touch
+	// the AVFrame / codec or the source image in that case.
+	if (!_videoFrame || !_videoFrame->data[0] || !_videoCodec || frame.isNull()) {
+		return;
+	}
+
 	if (_videoFirstTimestamp == -1) {
 		_videoFirstTimestamp = mcstimestamp;
 	}
