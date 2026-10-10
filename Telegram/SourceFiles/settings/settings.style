@@ -12,7 +12,7 @@ using "boxes/boxes.style";
 
 settingsButton: SettingsButton(infoProfileButton) {
 	style: boxTextStyle;
-	padding: margins(60px, 10px, 22px, 10px);
+	padding: margins(60px, 11px, 22px, 9px);
 	iconLeft: 20px;
 }
 settingsButtonRightLabelSpoiler: SettingsButton(settingsButton) {
@@ -85,36 +85,36 @@ settingsUpdate: SettingsButton(infoMainButton, settingsButtonNoIcon) {
 }
 settingsUpdateStatePosition: point(22px, 29px);
 
-settingsIconChat: icon {{ "settings/chat", settingsIconFg }};
+settingsIconChat: icon {{ "settings/chat", windowFgActive }};
 settingsIconInterfaceScale: icon {{ "settings/interface_scale", settingsIconFg }};
-settingsIconStickers: icon {{ "settings/stickers", settingsIconFg }};
-settingsIconEmoji: icon {{ "settings/emoji", settingsIconFg }};
+settingsIconStickers: icon {{ "settings/stickers", windowFgActive }};
+settingsIconEmoji: icon {{ "settings/emoji", windowFgActive }};
 
-settingsPremiumIconWallpapers: icon {{ "settings/photo", settingsIconFg }};
-settingsPremiumIconStories: icon {{ "settings/stories", settingsIconFg }};
-settingsPremiumIconChannelsOff: icon {{ "settings/premium/channels_off", settingsIconFg }};
-settingsPremiumIconDouble: icon {{ "settings/premium/double", settingsIconFg }};
-settingsPremiumIconStatus: icon {{ "settings/premium/status", settingsIconFg }};
-settingsPremiumIconLike: icon {{ "settings/premium/like", settingsIconFg }};
-settingsPremiumIconPlay: icon {{ "settings/premium/play", settingsIconFg }};
-settingsPremiumIconSpeed: icon {{ "settings/premium/speed", settingsIconFg }};
-settingsPremiumIconStar: icon {{ "settings/premium/star", settingsIconFg }};
-settingsPremiumIconVoice: icon {{ "settings/premium/voice", settingsIconFg }};
-settingsPremiumIconFiles: icon {{ "settings/premium/files", settingsIconFg }};
-settingsPremiumIconTranslations: icon {{ "settings/premium/translations", settingsIconFg }};
-settingsPremiumIconTags: icon {{ "settings/premium/tags", settingsIconFg }};
-settingsPremiumIconLastSeen: icon {{ "settings/premium/lastseen", settingsIconFg }};
-settingsPremiumIconPrivacy: icon {{ "settings/premium/privacy", settingsIconFg }};
-settingsPremiumIconBusiness: icon {{ "settings/premium/market", settingsIconFg }};
-settingsPremiumIconEffects: icon {{ "settings/premium/effects", settingsIconFg }};
-settingsPremiumIconChecklist: icon {{ "settings/premium/checklist", settingsIconFg }};
-settingsPremiumIconPeerColors: icon {{ "settings/premium/peer_colors-24x24", settingsIconFg }};
-settingsPremiumIconNoForwards: icon {{ "menu/share_off-24x24", settingsIconFg }};
+settingsPremiumIconWallpapers: icon {{ "settings/photo", windowFgActive }};
+settingsPremiumIconStories: icon {{ "settings/stories", windowFgActive }};
+settingsPremiumIconChannelsOff: icon {{ "settings/premium/channels_off", windowFgActive }};
+settingsPremiumIconDouble: icon {{ "settings/premium/double", windowFgActive }};
+settingsPremiumIconStatus: icon {{ "settings/premium/status", windowFgActive }};
+settingsPremiumIconLike: icon {{ "settings/premium/like", windowFgActive }};
+settingsPremiumIconPlay: icon {{ "settings/premium/play", windowFgActive }};
+settingsPremiumIconSpeed: icon {{ "settings/premium/speed", windowFgActive }};
+settingsPremiumIconStar: icon {{ "settings/premium/star", windowFgActive }};
+settingsPremiumIconVoice: icon {{ "settings/premium/voice", windowFgActive }};
+settingsPremiumIconFiles: icon {{ "settings/premium/files", windowFgActive }};
+settingsPremiumIconTranslations: icon {{ "settings/premium/translations", windowFgActive }};
+settingsPremiumIconTags: icon {{ "settings/premium/tags", windowFgActive }};
+settingsPremiumIconLastSeen: icon {{ "settings/premium/lastseen", windowFgActive }};
+settingsPremiumIconPrivacy: icon {{ "settings/premium/privacy", windowFgActive }};
+settingsPremiumIconBusiness: icon {{ "settings/premium/market", windowFgActive }};
+settingsPremiumIconEffects: icon {{ "settings/premium/effects", windowFgActive }};
+settingsPremiumIconChecklist: icon {{ "settings/premium/checklist", windowFgActive }};
+settingsPremiumIconPeerColors: icon {{ "settings/premium/peer_colors-24x24", windowFgActive }};
+settingsPremiumIconNoForwards: icon {{ "menu/share_off-24x24", windowFgActive }};
 settingsPremiumIconAiCompose: icon{
 	{ size(24px, 24px), transparent },
-	{ "chat/ai_letters-20x20", settingsIconFg, point(2px, 2px) },
-	{ "chat/ai_star1-20x20", settingsIconFg, point(2px, 2px) },
-	{ "chat/ai_star2-20x20", settingsIconFg, point(2px, 2px) },
+	{ "chat/ai_letters-20x20", windowFgActive, point(2px, 2px) },
+	{ "chat/ai_star1-20x20", windowFgActive, point(2px, 2px) },
+	{ "chat/ai_star2-20x20", windowFgActive, point(2px, 2px) },
 };
 settingsPremiumIconRich: icon {{ "settings/premium/rich", settingsIconFg }};
 
@@ -133,14 +133,14 @@ settingsStoriesIconDownload: icon {{ "menu/download", premiumButtonBg1 }};
 settingsStoriesIconCaption: icon {{ "settings/premium/stories_caption", premiumButtonBg1 }};
 settingsStoriesIconLinks: icon {{ "menu/links_profile", premiumButtonBg1 }};
 
-settingsBusinessIconLocation: icon {{ "settings/premium/business/business_location", settingsIconFg }};
-settingsBusinessIconHours: icon {{ "settings/premium/business/business_hours", settingsIconFg }};
-settingsBusinessIconReplies: icon {{ "settings/premium/business/business_quick", settingsIconFg }};
-settingsBusinessIconGreeting: icon {{ "settings/premium/status", settingsIconFg }};
-settingsBusinessIconAway: icon {{ "settings/premium/business/business_away", settingsIconFg }};
-settingsBusinessIconChatbots: icon {{ "settings/premium/business/business_chatbots", settingsIconFg }};
-settingsBusinessIconChatIntro: icon {{ "settings/premium/business/business_intro", settingsIconFg }};
-settingsBusinessIconChatLinks: icon {{ "settings/premium/business/business_links", settingsIconFg }};
+settingsBusinessIconLocation: icon {{ "settings/premium/business/business_location", windowFgActive }};
+settingsBusinessIconHours: icon {{ "settings/premium/business/business_hours", windowFgActive }};
+settingsBusinessIconReplies: icon {{ "settings/premium/business/business_quick", windowFgActive }};
+settingsBusinessIconGreeting: icon {{ "settings/premium/status", windowFgActive }};
+settingsBusinessIconAway: icon {{ "settings/premium/business/business_away", windowFgActive }};
+settingsBusinessIconChatbots: icon {{ "settings/premium/business/business_chatbots", windowFgActive }};
+settingsBusinessIconChatIntro: icon {{ "settings/premium/business/business_intro", windowFgActive }};
+settingsBusinessIconChatLinks: icon {{ "settings/premium/business/business_links", windowFgActive }};
 
 settingsBusinessPromoLocation: icon {{ "settings/premium/promo/business_location", premiumButtonBg1 }};
 settingsBusinessPromoHours: icon {{ "settings/premium/promo/business_hours", premiumButtonBg1 }};
@@ -165,8 +165,8 @@ settingsPremiumNewBadgePadding: margins(4px, 1px, 4px, 1px);
 settingsTTLChatsOff: icon {{ "settings/ttl/autodelete_off", windowSubTextFg }};
 settingsTTLChatsOn: icon {{ "settings/ttl/autodelete_on", windowActiveTextFg }};
 
-settingsIconAdd: icon {{ "settings/add", windowFgActive }};
-settingsIconRemove: icon {{ "settings/remove", windowFgActive }};
+settingsIconAdd: icon {{ "settings/add", windowBgActive }};
+settingsIconRemove: icon {{ "settings/remove", windowBgActive }};
 settingsFolderShareIcon: icon {{ "settings/folder_links", lightButtonFg }};
 
 settingsCheckbox: Checkbox(defaultBoxCheckbox) {
@@ -386,10 +386,16 @@ sessionIconEdge: icon{{ "settings/devices/device_web_edge", historyPeerUserpicFg
 sessionIconFirefox: icon{{ "settings/devices/device_web_firefox", historyPeerUserpicFg }};
 sessionIconSafari: icon{{ "settings/devices/device_web_safari", historyPeerUserpicFg }};
 sessionIconOther: icon{{ "settings/devices/device_other", historyPeerUserpicFg }};
+sessionIconMaterialgram: icon{{ "settings/devices/device_materialgram", historyPeerUserpicFg }};
+sessionIconOctogram: icon{{ "settings/devices/device_octogram", historyPeerUserpicFg }};
+sessionIconSwiftgram: icon{{ "settings/devices/device_swiftgram", historyPeerUserpicFg }};
 sessionBigUserpicSize: 70px;
 sessionBigLottieSize: 52px;
 sessionBigIconOther: icon{{ "settings/devices/device_other_large", historyPeerUserpicFg }};
 sessionBigIconWeb: icon{{ "settings/devices/device_web_other_large", historyPeerUserpicFg }};
+sessionBigIconMaterialgram: icon{{ "settings/devices/device_materialgram_large", historyPeerUserpicFg }};
+sessionBigIconOctogram: icon{{ "settings/devices/device_octogram_large", historyPeerUserpicFg }};
+sessionBigIconSwiftgram: icon{{ "settings/devices/device_swiftgram_large", historyPeerUserpicFg }};
 sessionBigCoverPadding: margins(0px, 18px, 0px, 7px);
 sessionBigName: FlatLabel(defaultFlatLabel) {
 	textFg: boxTitleFg;
@@ -452,11 +458,11 @@ settingsPhotoTop: 8px;
 settingsPhotoBottom: 16px;
 settingsPhotoHighlightMargin: margins(-4px, -4px, -4px, -4px);
 settingsNameLeft: 112px;
-settingsNameTop: 12px;
+settingsNameTop: 25px;
 settingsPhoneLeft: settingsNameLeft;
 settingsPhoneTop: 37px;
 settingsUsernameLeft: settingsNameLeft;
-settingsUsernameTop: 58px;
+settingsUsernameTop: 49px;
 settingsPeerToPeerSkip: 9px;
 
 settingsIconRadius: 6px;

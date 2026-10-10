@@ -319,6 +319,7 @@ private:
 	void addToggleArchive();
 	void addClearHistory();
 	void addDeleteChat();
+	void addScreenshotAction();
 	void addLeaveChat();
 	void addJoinChat();
 	void addTopicLink();
@@ -889,6 +890,35 @@ void Filler::addClearHistory() {
 		tr::lng_profile_clear_history(tr::now),
 		ClearHistoryHandler(_controller, _peer),
 		&st::menuIconClear);
+}
+
+void Filler::addScreenshotAction() {
+	if (!Main::Session::screenshotAction || !_peer || !_peer->isUser()) {
+		return;
+	}
+	const auto peer = _peer;
+	_addAction(
+		tr::lng_action_you_took_screenshot(tr::now),
+		[=] {
+			peer->session().api().request(MTPmessages_SendScreenshotNotification(
+				peer->input(),
+				MTP_inputReplyToMessage(
+					MTP_flags(0),
+					MTP_int(0),
+					MTPint(),
+					MTPInputPeer(),
+					MTPstring(),
+					MTPVector<MTPMessageEntity>(),
+					MTPint(),
+					MTPInputPeer(),
+					MTPint(),
+					MTPbytes()),
+				MTP_long(base::RandomValue<uint64>())
+			)).done([=](const MTPUpdates &result) {
+				peer->session().api().applyUpdates(result);
+			}).send();
+		},
+		&st::menuIconSaveImage);
 }
 
 void Filler::addDeleteChat() {
@@ -1906,6 +1936,7 @@ void Filler::fillHistoryActions() {
 	addClearHistory();
 	addDeleteChat();
 	addLeaveChat();
+	addScreenshotAction();
 }
 
 void Filler::fillProfileActions() {

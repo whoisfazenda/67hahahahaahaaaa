@@ -721,7 +721,7 @@ void HttpChecker::start() {
 		+ qstr("/current")
 		+ (updaterVersion > 1 ? QString::number(updaterVersion) : QString());
 	auto url = QUrl(path);
-	DEBUG_LOG(("Update Info: requesting update state"));
+	LOG(("Update Info: Requesting update state from '%1'.").arg(path));
 	const auto request = QNetworkRequest(url);
 	_manager = std::make_unique<QNetworkAccessManager>();
 	_reply = _manager->get(request);
@@ -1886,11 +1886,11 @@ void UpdateApplication() {
 			return "https://itunes.apple.com/ae/app/telegram-desktop/id946399090";
 #else // OS_WIN_STORE || OS_MAC_STORE
 			if (KSandbox::isFlatpak()) {
-				return "https://flathub.org/apps/details/org.telegram.desktop";
+				return "https://flathub.org/apps/details/io.github.kukuruzka165.materialgram";
 			} else if (KSandbox::isSnap()) {
 				return "https://snapcraft.io/telegram-desktop";
 			}
-			return "https://desktop.telegram.org";
+			return "https://github.com/kukuruzka165/materialgram/releases";
 #endif // OS_WIN_STORE || OS_MAC_STORE
 		}();
 		UrlClickHandler::Open(url);

@@ -154,7 +154,7 @@ public:
 protected:
 	void paintEvent(QPaintEvent *e) override;
 
-	static constexpr auto kText = "100%";
+	static constexpr auto kText = "110%";
 
 };
 
@@ -384,8 +384,8 @@ MainMenu::MainMenu(
 	parentResized();
 
 	_telegram->setMarkedText(tr::link(
-		u"Telegram Desktop"_q,
-		u"https://desktop.telegram.org"_q));
+		u"materialgram"_q,
+		u"https://github.com/kukuruzka165/materialgram"_q));
 	_telegram->setLinksTrusted();
 	_version->setMarkedText(
 		tr::link(

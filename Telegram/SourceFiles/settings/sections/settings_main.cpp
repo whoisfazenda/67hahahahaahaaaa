@@ -114,7 +114,6 @@ private:
 	void initViewers();
 	void updatePhoneText();
 	void refreshNameGeometry(int newWidth);
-	void refreshPhoneGeometry(int newWidth);
 	void refreshUsernameGeometry(int newWidth);
 	void refreshQrButtonGeometry(int newWidth);
 
@@ -125,8 +124,6 @@ private:
 
 	object_ptr<Ui::UserpicButton> _userpic;
 	object_ptr<Ui::FlatLabel> _name = { nullptr };
-	object_ptr<Ui::FlatLabel> _phone = { nullptr };
-	QString _phoneText;
 	object_ptr<Ui::FlatLabel> _username = { nullptr };
 	object_ptr<Ui::IconButton> _qrButton = { nullptr };
 
@@ -163,31 +160,11 @@ Cover::Cover(
 	Ui::UserpicButton::Source::PeerPhoto,
 	st::infoProfileCover.photo)
 , _name(this, st::infoProfileCover.name)
-, _phone(this, st::defaultFlatLabel, st::popupMenuWithIcons)
 , _username(this, st::infoProfileMegagroupCover.status) {
 	_user->updateFull();
 
 	_name->setSelectable(true);
 	_name->setContextCopyText(tr::lng_profile_copy_fullname(tr::now));
-
-	_phone->setSelectable(true);
-	_phone->setContextCopyText(tr::lng_profile_copy_phone(tr::now));
-	const auto hook = [=](Ui::FlatLabel::ContextMenuRequest request) {
-		if (request.selection.empty()) {
-			const auto callback = [=] {
-				Info::Profile::CopyPhoneToClipboard(
-					Info::Profile::PhoneValue(_user));
-			};
-			request.menu->addAction(
-				tr::lng_profile_copy_phone(tr::now),
-				callback,
-				&st::menuIconCopy);
-		} else {
-			_phone->fillContextMenu(request);
-		}
-		Info::Profile::AddPhoneSpoilerMenu(request.menu, _user);
-	};
-	_phone->setContextMenuHook(hook);
 
 	initViewers();
 	setupChildGeometry();
@@ -244,7 +221,6 @@ void Cover::setupChildGeometry() {
 			st::settingsPhotoTop,
 			newWidth);
 		refreshNameGeometry(newWidth);
-		refreshPhoneGeometry(newWidth);
 		refreshUsernameGeometry(newWidth);
 		refreshQrButtonGeometry(newWidth);
 	}, lifetime());
@@ -256,18 +232,6 @@ void Cover::initViewers() {
 	) | rpl::on_next([=](const QString &name) {
 		_name->setText(name);
 		refreshNameGeometry(width());
-	}, lifetime());
-
-	Info::Profile::PhoneValue(
-		_user
-	) | rpl::on_next([=](const TextWithEntities &value) {
-		_phoneText = value.text;
-		updatePhoneText();
-	}, lifetime());
-
-	_user->session().settings().phoneNumberHiddenValue(
-	) | rpl::on_next([=] {
-		updatePhoneText();
 	}, lifetime());
 
 	Info::Profile::UsernameValue(
@@ -317,26 +281,6 @@ void Cover::refreshNameGeometry(int newWidth) {
 	const auto badgeTop = nameTop;
 	const auto badgeBottom = nameTop + _name->height();
 	_badge.move(badgeLeft, badgeTop, badgeBottom);
-}
-
-void Cover::updatePhoneText() {
-	if (_user->session().settings().phoneNumberHidden()) {
-		_phone->setMarkedText(
-			Ui::Text::Wrapped({ _phoneText }, EntityType::Spoiler));
-	} else {
-		_phone->setText(_phoneText);
-	}
-	refreshPhoneGeometry(width());
-}
-
-void Cover::refreshPhoneGeometry(int newWidth) {
-	const auto phoneLeft = st::settingsPhoneLeft;
-	const auto phoneTop = st::settingsPhoneTop;
-	const auto phoneWidth = newWidth
-		- phoneLeft
-		- st::infoProfileCover.rightSkip;
-	_phone->resizeToWidth(phoneWidth);
-	_phone->moveToLeft(phoneLeft, phoneTop, newWidth);
 }
 
 void Cover::refreshUsernameGeometry(int newWidth) {
@@ -582,6 +526,26 @@ void BuildHelpSection(SectionBuilder &builder) {
 		.icon = { &st::menuIconFaq },
 		.onClick = [=] { OpenFaq(controller); },
 		.keywords = { u"help"_q, u"support"_q, u"questions"_q },
+	});
+
+	builder.addButton({
+		.id = u"materialgram-channel"_q,
+		.title = tr::lng_materialgram_settings_channel(),
+		.icon = { &st::menuIconMaterialgram },
+		.onClick = [=] {
+			UrlClickHandler::Open("https://t.me/materialgram");
+		},
+		.keywords = { u"materialgram"_q, u"channel"_q },
+	});
+
+	builder.addButton({
+		.id = u"materialgram-releases"_q,
+		.title = tr::lng_materialgram_settings_github(),
+		.icon = { &st::menuIconGitHub },
+		.onClick = [=] {
+			UrlClickHandler::Open("https://github.com/kukuruzka165/materialgram/releases");
+		},
+		.keywords = { u"materialgram"_q, u"github"_q, u"releases"_q },
 	});
 
 	builder.addButton({

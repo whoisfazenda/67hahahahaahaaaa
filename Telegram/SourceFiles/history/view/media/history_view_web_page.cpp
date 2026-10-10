@@ -161,7 +161,7 @@ constexpr auto kLogEntryPreviewLines = 2;
 
 [[nodiscard]] TextWithEntities PageToPhrase(not_null<WebPageData*> page) {
 	const auto type = page->type;
-	const auto text = tr::upper(page->iv
+	const auto text = page->iv
 		? tr::lng_view_button_iv(tr::now)
 		: page->uniqueGift
 		? tr::lng_view_button_collectible(tr::now)
@@ -220,7 +220,7 @@ constexpr auto kLogEntryPreviewLines = 2;
 				> base::unixtime::now()))
 			? tr::lng_auction_bar_view(tr::now)
 			: tr::lng_auction_preview_join(tr::now))
-		: QString());
+		: QString();
 	if (page->iv) {
 		return Ui::Text::IconEmoji(&st::historyIvIcon).append(text);
 	}
@@ -429,7 +429,7 @@ QSize WebPage::countOptimalSize() {
 	} else if (sponsored && !sponsored->buttonText.isEmpty()) {
 		_openButton.setText(
 			st::semiboldTextStyle,
-			tr::upper(sponsored->buttonText));
+			sponsored->buttonText);
 	}
 
 	const auto padding = inBubblePadding() + innerMargin();

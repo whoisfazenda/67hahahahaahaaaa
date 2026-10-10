@@ -22,7 +22,7 @@ msgDateFont: font(13px);
 msgMinWidth: 160px;
 msgPhotoSize: 33px;
 msgPhotoSkip: 40px;
-msgPadding: margins(11px, 8px, 11px, 8px);
+msgPadding: margins(13px, 7px, 13px, 8px);
 msgTagBadgePadding: margins(5px, -1px, 5px, 0px);
 msgTagBadgeBoostSkip: 2px;
 
@@ -62,7 +62,7 @@ middleClickAutoscrollMaxSpeed: 7200px;
 
 historyReplyTop: 2px;
 historyReplyBottom: 2px;
-historyReplyPreview: 32px;
+historyReplyPreview: 30px;
 historyReplyPreviewMargin: margins(7px, 4px, 4px, 4px);
 historyReplyPadding: margins(11px, 2px, 6px, 2px);
 historyReplyUser: IconEmoji {
@@ -236,9 +236,7 @@ historyScroll: ScrollArea(defaultScrollArea) {
 	barBg: historyScrollBarBg;
 	barBgOver: historyScrollBarBgOver;
 
-	round: 3px;
-
-	width: 12px;
+	width: 9px;
 	deltax: 3px;
 	deltat: 3px;
 	deltab: 3px;
@@ -272,8 +270,7 @@ membersInnerDropdown: InnerDropdown(defaultInnerDropdown) {
 	scroll: ScrollArea(defaultSolidScroll) {
 		deltat: 0px;
 		deltab: 0px;
-		round: 1px;
-		width: 8px;
+		width: 9px;
 		deltax: 3px;
 	}
 	scrollMargin: margins(0px, 5px, 0px, 5px);
@@ -437,14 +434,6 @@ bubbleRadiusLarge: 16px;
 
 historyPhotoLeft: 14px;
 historyPhotoBubbleMinWidth: 200px;
-historyBubbleTailInLeft: icon {{ "bubble_tail", msgInBg }};
-historyBubbleTailInLeftSelected: icon {{ "bubble_tail", msgInBgSelected }};
-historyBubbleTailOutLeft: icon {{ "bubble_tail", msgOutBg }};
-historyBubbleTailOutLeftSelected: icon {{ "bubble_tail", msgOutBgSelected }};
-historyBubbleTailInRight: icon {{ "bubble_tail-flip_horizontal", msgInBg }};
-historyBubbleTailInRightSelected: icon {{ "bubble_tail-flip_horizontal", msgInBgSelected }};
-historyBubbleTailOutRight: icon {{ "bubble_tail-flip_horizontal", msgOutBg }};
-historyBubbleTailOutRightSelected: icon {{ "bubble_tail-flip_horizontal", msgOutBgSelected }};
 
 historyPeerUserpicFont: semiboldFont;
 
@@ -491,18 +480,18 @@ historyCallArrowOut: icon {{ "calls/call_arrow_out", historyCallArrowOutFg }};
 historyCallArrowOutSelected: icon {{ "calls/call_arrow_out", historyCallArrowOutFgSelected }};
 historyCallWidth: 240px;
 historyCallHeight: 56px;
-historyCallInIcon: icon {{ "calls/call_answer", msgFileInBg }};
-historyCallInIconSelected: icon {{ "calls/call_answer", msgFileInBgSelected }};
-historyCallOutIcon: icon {{ "calls/call_answer", msgFileOutBg }};
-historyCallOutIconSelected: icon {{ "calls/call_answer", msgFileOutBgSelected }};
-historyCallCameraInIcon: icon {{ "calls/call_camera_active", msgFileInBg }};
-historyCallCameraInIconSelected: icon {{ "calls/call_camera_active", msgFileInBgSelected }};
-historyCallCameraOutIcon: icon {{ "calls/call_camera_active", msgFileOutBg }};
-historyCallCameraOutIconSelected: icon {{ "calls/call_camera_active", msgFileOutBgSelected }};
-historyCallGroupInIcon: icon {{ "calls/call_group", msgFileInBg }};
-historyCallGroupInIconSelected: icon {{ "calls/call_group", msgFileInBgSelected }};
-historyCallGroupOutIcon: icon {{ "calls/call_group", msgFileOutBg }};
-historyCallGroupOutIconSelected: icon {{ "calls/call_group", msgFileOutBgSelected }};
+historyCallInIcon: icon {{ "calls/call_answer", msgInDateFg }};
+historyCallInIconSelected: icon {{ "calls/call_answer", msgInDateFgSelected }};
+historyCallOutIcon: icon {{ "calls/call_answer", msgOutDateFg }};
+historyCallOutIconSelected: icon {{ "calls/call_answer", msgOutDateFgSelected }};
+historyCallCameraInIcon: icon {{ "calls/call_camera_active", msgInDateFg }};
+historyCallCameraInIconSelected: icon {{ "calls/call_camera_active", msgInDateFgSelected }};
+historyCallCameraOutIcon: icon {{ "calls/call_camera_active", msgOutDateFg }};
+historyCallCameraOutIconSelected: icon {{ "calls/call_camera_active", msgOutDateFgSelected }};
+historyCallGroupInIcon: icon {{ "calls/call_group", msgInDateFg }};
+historyCallGroupInIconSelected: icon {{ "calls/call_group", msgInDateFgSelected }};
+historyCallGroupOutIcon: icon {{ "calls/call_group", msgOutDateFg }};
+historyCallGroupOutIconSelected: icon {{ "calls/call_group", msgOutDateFgSelected }};
 historyCallIconPosition: point(12px, 10px);
 historyCallLeft: 16px;
 historyCallTop: 9px;
@@ -791,7 +780,6 @@ historyGroupCallBlobMinRadius: 23px;
 historyGroupCallBlobMaxRadius: 25px;
 
 largeEmojiSize: 36px;
-largeEmojiOutline: 1px;
 largeEmojiPadding: margins(0px, 0px, 0px, 0px);
 largeEmojiSkip: 4px;
 
@@ -1107,8 +1095,8 @@ chatSimilarBadgePadding: margins(2px, 0px, 3px, 1px);
 chatSimilarBadgeTop: 43px;
 chatSimilarBadgeIcon: icon{{ "chat/mini_subscribers", premiumButtonFg }};
 chatSimilarBadgeIconPosition: point(0px, 1px);
-chatSimilarLockedIcon: icon{{ "chat/mini_lock", premiumButtonFg }};
-chatSimilarLockedIconPosition: point(0px, 1px);
+chatSimilarLockedIcon: icon{{ "chat/mini_lock", activeButtonFg }};
+chatSimilarLockedIconPosition: point(0px, 0px);
 chatSimilarBadgeFont: font(10px bold);
 chatSimilarNameTop: 59px;
 chatSimilarName: TextStyle(defaultTextStyle) {

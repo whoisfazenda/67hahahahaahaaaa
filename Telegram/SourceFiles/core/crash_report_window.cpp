@@ -40,10 +40,10 @@ PreLaunchWindow::PreLaunchWindow(QString title) {
 	setWindowIcon(Window::CreateIcon());
 	setWindowFlags(Qt::Dialog | Qt::CustomizeWindowHint | Qt::WindowTitleHint | Qt::WindowCloseButtonHint);
 
-	setWindowTitle(title.isEmpty() ? u"Telegram"_q : title);
+	setWindowTitle(title.isEmpty() ? u"materialgram"_q : title);
 
 	QPalette p(palette());
-	p.setColor(QPalette::Window, QColor(255, 255, 255));
+	p.setColor(QPalette::Window, QColor(255, 252, 245));
 	setPalette(p);
 
 	_size = QFontInfo(font()).pixelSize();
@@ -54,16 +54,16 @@ PreLaunchWindow::PreLaunchWindow(QString title) {
 	setStyleSheet(uR"(
 QPushButton {
 	padding: %1px %2px;
-	background-color: #ffffff;
+	background-color: #fffcf5;
 	border-radius: %3px;
 }
 QPushButton#confirm:hover,
 QPushButton#cancel:hover {
-	background-color: #e3f1fa;
-	color: #2f9fea;
+	background-color: #ebecde;
+	color: #57651a;
 }
 QPushButton#confirm {
-	color: #2f9fea;
+	color: #57651a;
 }
 QPushButton#cancel {
 	color: #aeaeae;
@@ -73,7 +73,7 @@ QLineEdit {
 	padding: 5px;
 }
 QLineEdit:focus {
-	border: 2px solid #37a1de;
+	border: 2px solid #57651a;
 	padding: 4px;
 }
 )"_q.arg(paddingVertical).arg(paddingHorizontal).arg(borderRadius));
@@ -107,8 +107,8 @@ PreLaunchLabel::PreLaunchLabel(QWidget *parent) : QLabel(parent) {
 	setFont(labelFont);
 
 	QPalette p(palette());
-	p.setColor(QPalette::WindowText, QColor(0, 0, 0));
-	p.setColor(QPalette::Text, QColor(0, 0, 0));
+	p.setColor(QPalette::WindowText, QColor(27, 28, 23));
+	p.setColor(QPalette::Text, QColor(27, 28, 23));
 	setPalette(p);
 	show();
 };
@@ -165,10 +165,10 @@ PreLaunchInput::PreLaunchInput(QWidget *parent, bool password) : QLineEdit(paren
 	setFont(logFont);
 
 	QPalette p(palette());
-	p.setColor(QPalette::Window, QColor(255, 255, 255));
-	p.setColor(QPalette::Base, QColor(255, 255, 255));
-	p.setColor(QPalette::WindowText, QColor(0, 0, 0));
-	p.setColor(QPalette::Text, QColor(0, 0, 0));
+	p.setColor(QPalette::Window, QColor(255, 252, 245));
+	p.setColor(QPalette::Base, QColor(255, 252, 245));
+	p.setColor(QPalette::WindowText, QColor(27, 28, 23));
+	p.setColor(QPalette::Text, QColor(27, 28, 23));
 	setPalette(p);
 
 	QLineEdit::setTextMargins(0, 0, 0, 0);
@@ -245,12 +245,12 @@ NotStartedWindow::NotStartedWindow()
 : _label(this)
 , _log(this)
 , _close(this) {
-	_label.setText(u"Could not start Telegram Desktop!\nYou can see complete log below:"_q);
+	_label.setText(u"Could not start materialgram!\nYou can see complete log below:"_q);
 
 	_log.setPlainText(Logs::full());
 
 	connect(&_close, &QPushButton::clicked, [=] { close(); });
-	_close.setText(u"CLOSE"_q);
+	_close.setText(u"Close"_q);
 
 	QRect scr(QApplication::primaryScreen()->availableGeometry());
 	move(scr.x() + (scr.width() / 6), scr.y() + (scr.height() / 6));
@@ -387,9 +387,9 @@ LastCrashedWindow::LastCrashedWindow(
 		[=] { networkSettings(); });
 
 	if (_sendingState == SendingNoReport) {
-		_label.setText(u"Last time Telegram Desktop was not closed properly."_q);
+		_label.setText(u"Last time materialgram was not closed properly."_q);
 	} else {
-		_label.setText(u"Last time Telegram Desktop crashed :("_q);
+		_label.setText(u"Last time materialgram crashed :("_q);
 	}
 
 	if (_updaterData) {
@@ -480,9 +480,9 @@ LastCrashedWindow::LastCrashedWindow(
 	});
 	_saveReport.setText(u"SAVE TO FILE"_q);
 	connect(&_saveReport, &QPushButton::clicked, [=] { saveReport(); });
-	_getApp.setText(u"GET THE LATEST OFFICIAL VERSION OF TELEGRAM DESKTOP"_q);
+	_getApp.setText(u"GET THE LATEST OFFICIAL VERSION OF MATERIAL TELEGRAM"_q);
 	connect(&_getApp, &QPushButton::clicked, [=] {
-		QDesktopServices::openUrl(u"https://desktop.telegram.org"_q);
+		QDesktopServices::openUrl(u"https://github.com/kukuruzka165/materialgram"_q);
 	});
 
 	_send.setText(u"SEND CRASH REPORT"_q);
@@ -908,7 +908,7 @@ void LastCrashedWindow::updateControls() {
 		h += _networkSettings.height() + padding;
 	}
 
-	QSize s(2 * padding + QFontMetrics(_label.font()).horizontalAdvance(u"Last time Telegram Desktop was not closed properly."_q) + padding + _networkSettings.width(), h);
+	QSize s(2 * padding + QFontMetrics(_label.font()).horizontalAdvance(u"Last time materialgram was not closed properly."_q) + padding + _networkSettings.width(), h);
 	if (s == size()) {
 		resizeEvent(0);
 	} else {

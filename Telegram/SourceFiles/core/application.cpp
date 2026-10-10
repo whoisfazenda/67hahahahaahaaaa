@@ -1205,7 +1205,8 @@ bool Application::openInternalUrl(const QString &url, QVariant context) {
 }
 
 QString Application::changelogLink() const {
-	return u"https://telegramdesktop.github.io/tdesktop/changelog/"_q;
+	const auto base = u"https://github.com/kukuruzka165/materialgram/commits"_q;
+	return base;
 }
 
 bool Application::openCustomUrl(
@@ -1382,6 +1383,8 @@ bool Application::savingPositionFor(
 
 bool Application::hasActiveWindow(not_null<Main::Session*> session) const {
 	if (Quitting() || !_lastActiveWindow) {
+		return false;
+	} else if (Main::Session::debugFocus) {
 		return false;
 	} else if (_calls->hasActivePanel(session)) {
 		return true;

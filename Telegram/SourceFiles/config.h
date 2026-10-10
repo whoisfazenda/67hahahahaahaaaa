@@ -16,9 +16,9 @@ enum {
 	LocalEncryptNoPwdIterCount = 4, // key derivation iteration count without pwd (not secure anyway)
 	LocalEncryptSaltSize = 32, // 256 bit
 
-	AutoSearchTimeout = 900, // 0.9 secs
+	AutoSearchTimeout = 500, // 0.5 secs
 
-	PreloadHeightsCount = 3, // when 3 screens to scroll left make a preload request
+	PreloadHeightsCount = 1, // when 1 screen to scroll left make a preload request
 
 	SearchPeopleLimit = 5,
 
@@ -29,7 +29,7 @@ enum {
 
 	WrongPasscodeTimeout = 1500,
 
-	ChoosePeerByDragTimeout = 1000, // 1 second mouse not moved to choose dialog when dragging a file
+	ChoosePeerByDragTimeout = 500, // 0.5 secs mouse not moved to choose dialog when dragging a file
 };
 
 inline const char *cGUIDStr() {
@@ -44,9 +44,9 @@ inline const char *cGUIDStr() {
 
 static const char *UpdatesPublicKey = "\
 -----BEGIN RSA PUBLIC KEY-----\n\
-MIGJAoGBAMA4ViQrjkPZ9xj0lrer3r23JvxOnrtE8nI69XLGSr+sRERz9YnUptnU\n\
-BZpkIfKaRcl6XzNJiN28cVwO1Ui5JSa814UAiDHzWUqCaXUiUEQ6NmNTneiGx2sQ\n\
-+9PKKlb8mmr3BB9A45ZNwLT6G9AK3+qkZLHojeSA+m84/a6GP4svAgMBAAE=\n\
+MIGJAoGBAKl46JQOgn2A1W+YCmyANBQ4QokFPRh09EcvAQVttqIYWfAZkKLj2tHE\n\
+p0/eJ+Q3AfXEU5q4Gws4oNI5kg7hxXxq9gQ0CY3i2G+30jOuaincPAjWigtag1f/\n\
+jbhm+k6CXLQnplwDxwdfAqPFsbHCUSc1sJuA7s2J3R55FgfF46BrAgMBAAE=\n\
 -----END RSA PUBLIC KEY-----\
 ";
 

@@ -496,11 +496,8 @@ void Selector::initGeometry(int innerTop) {
 	const auto top = innerTop
 		- margins.top()
 		- (_useTransparency ? _collapsedTopSkip : 0);
-	const auto add = _useTransparency
-		? (_st.icons.stripBubble.height() - margins.bottom())
-		: 0;
 	_outer = QRect(0, _collapsedTopSkip - _aboutExtend, width, height);
-	_outerWithBubble = _outer.marginsAdded({ 0, 0, 0, add });
+	_outerWithBubble = _outer.marginsAdded({ 0, 0, 0, 0 });
 	setGeometry(_outerWithBubble.marginsAdded(
 		{ 0, _outer.y(), 0, 0}
 	).translated(left, top));
@@ -611,7 +608,6 @@ void Selector::paintAppearing(QPainter &p) {
 		QRect{ 0, size.height(), width(), height() - size.height() },
 		Qt::transparent);
 	q.setCompositionMode(QPainter::CompositionMode_SourceOver);
-	paintBubble(q, appearedWidth);
 	q.end();
 
 	p.drawImage(
@@ -656,14 +652,13 @@ void Selector::paintBackgroundToBuffer() {
 	if (!fill.isEmpty()) {
 		p.fillRect(fill, _st.bg);
 	}
-	paintBubble(p, _inner.width());
 }
 
 int Selector::skipYBubbleUpShift() const {
 	if (!_bubbleUp) {
 		return 0;
 	}
-	return -_st.icons.stripBubble.height() + marginsForShadow().bottom();
+	return marginsForShadow().bottom();
 }
 
 void Selector::paintCollapsed(QPainter &p) {
@@ -849,18 +844,6 @@ void Selector::finishExpand() {
 	_scroll->show();
 	_list->afterShown();
 	_show->session().api().updateCustomEmoji();
-}
-
-void Selector::paintBubble(QPainter &p, int innerWidth) {
-	const auto &bubble = _st.icons.stripBubble;
-	const auto bubbleRight = std::min(
-		st::reactStripBubbleRight,
-		(innerWidth - bubble.width()) / 2);
-	bubble.paint(
-		p,
-		_inner.x() + innerWidth - bubbleRight - bubble.width(),
-		_inner.y() + _inner.height() - _outer.y(),
-		width());
 }
 
 void Selector::paintEvent(QPaintEvent *e) {

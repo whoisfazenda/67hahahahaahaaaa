@@ -1527,7 +1527,7 @@ bool FieldAutocomplete::Inner::isRemovableMentionRow(int index) const {
 
 void FieldAutocomplete::Inner::mousePressEvent(QMouseEvent *e) {
 	selectByMouse(e->globalPos());
-	if (e->button() == Qt::LeftButton) {
+	if (e->button() == Qt::LeftButton || e->button() == Qt::RightButton) {
 		if (_overDelete
 			&& (_mrows->empty()
 				? (_sel >= 0 && _sel < _hrows->size())
@@ -1564,7 +1564,11 @@ void FieldAutocomplete::Inner::mousePressEvent(QMouseEvent *e) {
 
 			selectByMouse(e->globalPos());
 		} else if (_srows->empty()) {
-			chooseSelected(FieldAutocomplete::ChooseMethod::ByClick);
+			if (e->button() == Qt::LeftButton) {
+				chooseSelected(FieldAutocomplete::ChooseMethod::ByClick);
+			} else {
+				chooseSelected(FieldAutocomplete::ChooseMethod::ByTab);
+			}
 		} else {
 			_down = _sel;
 			_previewTimer.callOnce(QApplication::startDragTime());
@@ -1902,6 +1906,9 @@ void InitFieldAutocomplete(
 				PrepareMentionTag(user));
 		} else {
 			field->insertTag('@' + data.mention);
+		}
+		if (data.method == FieldAutocompleteChooseMethod::ByTab) {
+			field->textCursor().insertText("@");
 		}
 	}, raw->lifetime());
 
